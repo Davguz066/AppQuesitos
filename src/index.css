@@ -212,7 +212,7 @@ All colors MUST be HSL.
   
   /* Product images - Responsive */
   .product-image {
-    @apply object-contain transition-transform duration-300;
+    @apply object-contain transition-transform duration-300 rounded-lg;
     width: clamp(2.5rem, 6vw, 3.5rem); /* más pequeñas */
     height: clamp(2.5rem, 6vw, 3.5rem); /* más pequeñas */
   }
