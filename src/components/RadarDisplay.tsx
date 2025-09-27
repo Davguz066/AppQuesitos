@@ -121,7 +121,7 @@ const RadarDisplay = () => {
     };
 
     // Mover los productos cada 6 segundos para más dinamismo
-    const interval = setInterval(moveProducts, 6000);
+    const interval = setInterval(moveProducts, 10000); // Más lento: cada 10 segundos
 
     return () => {
       clearInterval(interval);
