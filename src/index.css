@@ -202,8 +202,8 @@ All colors MUST be HSL.
   
   /* Tamaño grande para product items */
   .product-item-large {
-    width: clamp(4.5rem, 10vw, 6rem);  /* más grandes */
-    height: clamp(4.5rem, 10vw, 6rem); /* más grandes */
+    width: clamp(3.75rem, 8.5vw, 5rem);  /* tamaño intermedio */
+    height: clamp(3.75rem, 8.5vw, 5rem); /* tamaño intermedio */
   }
   
   .product-item:hover {
@@ -225,8 +225,8 @@ All colors MUST be HSL.
   
   /* Tamaño grande para product images */
   .product-image-large {
-    width: clamp(4rem, 9vw, 5.5rem);   /* más grandes */
-    height: clamp(4rem, 9vw, 5.5rem);  /* más grandes */
+    width: clamp(3.25rem, 7.5vw, 4.5rem);   /* tamaño intermedio */
+    height: clamp(3.25rem, 7.5vw, 4.5rem);  /* tamaño intermedio */
   }
   
 }
