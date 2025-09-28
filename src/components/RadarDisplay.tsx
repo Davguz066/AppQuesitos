@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import cheeseWheel from '../assets/cheese-wheel.png';
-import cheeseSlices from '../assets/cheese-slices.png';
+import cheeseSlices from '../assets/cheese-slices-removebg-preview.png';
 import babybelCheese from '../assets/babybel-cheese.png';
 import blueCheese from '../assets/blue-cheese.png';
-import granaPadano from '../assets/cuna_grana_padano.jpg';
-import quesoBrie from '../assets/quesoBrie.jpg';
-import antiGorda from '../assets/antiGorda.jpg';
+import granaPadano from '../assets/cuna_grana_padano.png';
+import quesoBrie from '../assets/quesoBrie.png';
+import antiGorda from '../assets/antiGorda.png';
 
 
 interface ProductPosition {
