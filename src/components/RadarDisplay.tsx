@@ -22,7 +22,11 @@ interface Product {
   isVisible?: boolean;
 }
 
-const RadarDisplay = () => {
+interface RadarDisplayProps {
+  isLargeSize?: boolean;
+}
+
+const RadarDisplay: React.FC<RadarDisplayProps> = ({ isLargeSize = false }) => {
   const generateRandomPosition = (): ProductPosition => {
     // Generar posiciones aleatorias dentro del área del radar
     // Usar coordenadas polares para mejor distribución
@@ -156,7 +160,7 @@ const RadarDisplay = () => {
         (product.isVisible !== false || (product.name === 'Gorda detectada' && antiGordaDisappearing)) && (
           <div
             key={product.id}
-            className={`product-item ${product.isMoving ? 'product-item-moving' : ''} ${
+            className={`product-item ${isLargeSize ? 'product-item-large' : ''} ${product.isMoving ? 'product-item-moving' : ''} ${
               product.name === 'Gorda detectada' && product.isVisible ? 'animate-product-appear' : ''
             } ${
               product.name === 'Gorda detectada' && antiGordaDisappearing ? 'animate-product-disappear' : ''
@@ -171,7 +175,7 @@ const RadarDisplay = () => {
             <img 
               src={product.image} 
               alt={product.name}
-              className="product-image"
+              className={`product-image ${isLargeSize ? 'product-image-large' : ''}`}
             />
           </div>
         )
