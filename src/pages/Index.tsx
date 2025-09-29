@@ -3,16 +3,46 @@ import CategoryButtons from '../components/CategoryButtons';
 import RadarDisplay from '../components/RadarDisplay';
 import SonarAudio from '../components/SonarAudio';
 import SizeControls from '../components/SizeControls';
+import { useAuth } from '@/hooks/useAuth';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 const Index = () => {
+  const { user } = useAuth();
   const [isLargeSize, setIsLargeSize] = React.useState(false);
 
   const handleToggleSize = () => {
     setIsLargeSize(!isLargeSize);
   };
 
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold text-white mb-4">
+            🧀 Detector de Quesos 🧀
+          </h1>
+          <p className="text-xl text-muted-foreground mb-6">
+            Detectando los mejores quesitos en tu área
+          </p>
+          <p className="text-muted-foreground mb-8">
+            Please sign in to access the cheese radar
+          </p>
+          <div className="space-x-4">
+            <Button asChild>
+              <Link to="/login">Sign In</Link>
+            </Button>
+            <Button variant="outline" asChild>
+              <Link to="/signup">Sign Up</Link>
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-background flex flex-col p-4 sm:p-6 lg:p-8">
+    <div className="min-h-[calc(100vh-4rem)] bg-background flex flex-col p-4 sm:p-6 lg:p-8">
       <div className="flex-1 flex flex-col items-center justify-center max-w-6xl mx-auto w-full">
         {/* Header - Responsive */}
         <div className="mb-6 sm:mb-8 lg:mb-12 text-center">
