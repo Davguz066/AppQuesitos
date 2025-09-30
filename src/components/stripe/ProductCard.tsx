@@ -66,7 +66,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           disabled={loading}
           className="w-full text-sm sm:text-base"
         >
-          {loading ? 'Procesando...' : 'Comprar'}
+          {loading ? 'Procesando...' : 'Pagar'}
         </Button>
       </CardContent>
     </Card>
