@@ -59,7 +59,7 @@ const SubscriptionStatus: React.FC = () => {
       </CardHeader>
       <CardContent>
         <Badge variant={getStatusColor(subscription.subscription_status)}>
-          {subscription.subscription_status.replace('_', ' ').toUpperCase()}
+          {(subscription.subscription_status || '').replace('_', ' ').toUpperCase()}
         </Badge>
         {subscription.current_period_end && (
           <p className="text-sm text-muted-foreground mt-2">

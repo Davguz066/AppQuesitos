@@ -3,7 +3,7 @@ import { supabase } from '@/lib/supabase';
 import { useAuth } from './useAuth';
 
 interface Subscription {
-  subscription_status: string;
+  subscription_status: string | null;
   price_id: string | null;
   current_period_start: number | null;
   current_period_end: number | null;
