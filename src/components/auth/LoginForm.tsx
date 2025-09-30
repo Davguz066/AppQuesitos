@@ -40,13 +40,13 @@ const LoginForm = () => {
     <div className="min-h-screen flex items-center justify-center bg-background p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl">Welcome Back</CardTitle>
-          <CardDescription>Sign in to your account</CardDescription>
+          <CardTitle className="text-xl sm:text-2xl">Bienvenido de vuelta</CardTitle>
+          <CardDescription className="text-sm sm:text-base">Inicia sesión en tu cuenta</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email" className="text-sm sm:text-base">Correo electrónico</Label>
               <Input
                 id="email"
                 type="email"
@@ -57,7 +57,7 @@ const LoginForm = () => {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password" className="text-sm sm:text-base">Contraseña</Label>
               <Input
                 id="password"
                 type="password"
@@ -68,13 +68,13 @@ const LoginForm = () => {
               />
             </div>
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? 'Signing in...' : 'Sign In'}
+              {loading ? 'Iniciando sesión...' : 'Iniciar sesión'}
             </Button>
           </form>
-          <div className="mt-4 text-center text-sm">
-            Don't have an account?{' '}
+          <div className="mt-4 text-center text-xs sm:text-sm">
+            ¿No tienes una cuenta?{' '}
             <Link to="/signup" className="text-primary hover:underline">
-              Sign up
+              Regístrate
             </Link>
           </div>
         </CardContent>

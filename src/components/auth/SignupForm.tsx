@@ -55,13 +55,13 @@ const SignupForm = () => {
     <div className="min-h-screen flex items-center justify-center bg-background p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl">Create Account</CardTitle>
-          <CardDescription>Sign up to get started</CardDescription>
+          <CardTitle className="text-xl sm:text-2xl">Crear cuenta</CardTitle>
+          <CardDescription className="text-sm sm:text-base">Regístrate para comenzar</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSignup} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email" className="text-sm sm:text-base">Correo electrónico</Label>
               <Input
                 id="email"
                 type="email"
@@ -72,7 +72,7 @@ const SignupForm = () => {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password" className="text-sm sm:text-base">Contraseña</Label>
               <Input
                 id="password"
                 type="password"
@@ -84,7 +84,7 @@ const SignupForm = () => {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="confirmPassword">Confirm Password</Label>
+              <Label htmlFor="confirmPassword" className="text-sm sm:text-base">Confirmar contraseña</Label>
               <Input
                 id="confirmPassword"
                 type="password"
@@ -96,13 +96,13 @@ const SignupForm = () => {
               />
             </div>
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? 'Creating account...' : 'Sign Up'}
+              {loading ? 'Creando cuenta...' : 'Registrarse'}
             </Button>
           </form>
-          <div className="mt-4 text-center text-sm">
-            Already have an account?{' '}
+          <div className="mt-4 text-center text-xs sm:text-sm">
+            ¿Ya tienes una cuenta?{' '}
             <Link to="/login" className="text-primary hover:underline">
-              Sign in
+              Iniciar sesión
             </Link>
           </div>
         </CardContent>

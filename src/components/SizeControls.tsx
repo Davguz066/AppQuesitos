@@ -9,23 +9,25 @@ interface SizeControlsProps {
 
 const SizeControls: React.FC<SizeControlsProps> = ({ isLargeSize, onToggleSize }) => {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center">
       <Button
         onClick={onToggleSize}
         variant="outline"
-        size="sm"
-        className="bg-background/80 backdrop-blur-sm border-green-500/40 hover:border-green-500/60 hover:bg-green-500/10 text-white"
+        size="sm" 
+        className="bg-background/80 backdrop-blur-sm border-green-500/40 hover:border-green-500/60 hover:bg-green-500/10 text-white text-xs sm:text-sm px-2 sm:px-3"
         title={isLargeSize ? 'Reducir tamaño de fotos' : 'Aumentar tamaño de fotos'}
       >
         {isLargeSize ? (
           <>
-            <ZoomOut className="h-4 w-4 mr-2" />
-            Reducir
+            <ZoomOut className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+            <span className="hidden sm:inline">Reducir</span>
+            <span className="sm:hidden">-</span>
           </>
         ) : (
           <>
-            <ZoomIn className="h-4 w-4 mr-2" />
-            Ampliar
+            <ZoomIn className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+            <span className="hidden sm:inline">Ampliar</span>
+            <span className="sm:hidden">+</span>
           </>
         )}
       </Button>

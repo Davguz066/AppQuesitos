@@ -8,30 +8,30 @@ const Header: React.FC = () => {
   const { user, signOut } = useAuth();
 
   return (
-    <header className="border-b border-border bg-background/80 backdrop-blur-sm">
-      <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-        <Link to="/" className="text-xl font-bold">
+    <header className="border-b border-border bg-background/80 backdrop-blur-sm sticky top-0 z-50">
+      <div className="max-w-6xl mx-auto px-3 sm:px-4 py-2 sm:py-3 flex items-center justify-between">
+        <Link to="/" className="text-lg sm:text-xl font-bold truncate">
           🧀 Detector de Quesos
         </Link>
         
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           {user ? (
             <>
               <SubscriptionStatus />
-              <Button variant="outline" asChild>
-                <Link to="/pricing">Pricing</Link>
+              <Button variant="outline" size="sm" className="hidden sm:inline-flex" asChild>
+                <Link to="/pricing">Precios</Link>
               </Button>
-              <Button variant="ghost" onClick={signOut}>
-                Sign Out
+              <Button variant="ghost" size="sm" onClick={signOut} className="text-xs sm:text-sm">
+                Salir
               </Button>
             </>
           ) : (
-            <div className="space-x-2">
-              <Button variant="ghost" asChild>
-                <Link to="/login">Sign In</Link>
+            <div className="flex gap-1 sm:gap-2">
+              <Button variant="ghost" size="sm" className="text-xs sm:text-sm" asChild>
+                <Link to="/login">Entrar</Link>
               </Button>
-              <Button asChild>
-                <Link to="/signup">Sign Up</Link>
+              <Button size="sm" className="text-xs sm:text-sm" asChild>
+                <Link to="/signup">Registro</Link>
               </Button>
             </div>
           )}

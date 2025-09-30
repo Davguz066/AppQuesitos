@@ -19,7 +19,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       const { data: { session } } = await supabase.auth.getSession();
       
       if (!session) {
-        toast.error('Please log in to make a purchase');
+        toast.error('Por favor inicia sesión para realizar una compra');
         return;
       }
 
@@ -48,25 +48,25 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       }
     } catch (error) {
       console.error('Error creating checkout session:', error);
-      toast.error('Failed to start checkout process');
+      toast.error('Error al iniciar el proceso de pago');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <Card className="w-full max-w-sm">
+    <Card className="w-full h-full flex flex-col">
       <CardHeader>
-        <CardTitle>{product.name}</CardTitle>
-        <CardDescription>{product.description}</CardDescription>
+        <CardTitle className="text-lg sm:text-xl">{product.name}</CardTitle>
+        <CardDescription className="text-sm sm:text-base flex-grow">{product.description}</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="mt-auto">
         <Button 
           onClick={handlePurchase} 
           disabled={loading}
-          className="w-full"
+          className="w-full text-sm sm:text-base"
         >
-          {loading ? 'Processing...' : 'Purchase'}
+          {loading ? 'Procesando...' : 'Comprar'}
         </Button>
       </CardContent>
     </Card>

@@ -9,32 +9,36 @@ const SubscriptionStatus: React.FC = () => {
 
   if (loading) {
     return (
-      <Card className="w-full max-w-md">
-        <CardContent className="p-6">
-          <div className="animate-pulse">
-            <div className="h-4 bg-muted rounded w-3/4 mb-2"></div>
-            <div className="h-3 bg-muted rounded w-1/2"></div>
-          </div>
-        </CardContent>
-      </Card>
+      <div className="hidden sm:block">
+        <Card className="w-full max-w-xs">
+          <CardContent className="p-3 sm:p-4">
+            <div className="animate-pulse">
+              <div className="h-3 bg-muted rounded w-3/4 mb-2"></div>
+              <div className="h-2 bg-muted rounded w-1/2"></div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     );
   }
 
   if (!subscription || subscription.subscription_status === 'not_started') {
     return (
-      <Card className="w-full max-w-md">
-        <CardHeader>
-          <CardTitle className="text-sm">Subscription Status</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Badge variant="secondary">No Active Subscription</Badge>
-        </CardContent>
-      </Card>
+      <div className="hidden sm:block">
+        <Card className="w-full max-w-xs">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-xs">Estado de suscripción</CardTitle>
+          </CardHeader>
+          <CardContent className="pt-0">
+            <Badge variant="secondary" className="text-xs">Sin suscripción activa</Badge>
+          </CardContent>
+        </Card>
+      </div>
     );
   }
 
   const product = stripeProducts.find(p => p.priceId === subscription.price_id);
-  const productName = product?.name || 'Unknown Plan';
+  const productName = product?.name || 'Plan desconocido';
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -51,24 +55,49 @@ const SubscriptionStatus: React.FC = () => {
     }
   };
 
+  const getStatusText = (status: string) => {
+    switch (status) {
+      case 'active':
+        return 'ACTIVA';
+      case 'trialing':
+        return 'PRUEBA';
+      case 'past_due':
+        return 'VENCIDA';
+      case 'canceled':
+        return 'CANCELADA';
+      case 'incomplete':
+        return 'INCOMPLETA';
+      case 'incomplete_expired':
+        return 'EXPIRADA';
+      case 'unpaid':
+        return 'NO PAGADA';
+      case 'paused':
+        return 'PAUSADA';
+      default:
+        return status.toUpperCase();
+    }
+  };
+
   return (
-    <Card className="w-full max-w-md">
-      <CardHeader>
-        <CardTitle className="text-sm">Subscription Status</CardTitle>
-        <CardDescription>{productName}</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <Badge variant={getStatusColor(subscription.subscription_status)}>
-          {(subscription.subscription_status || '').replace('_', ' ').toUpperCase()}
-        </Badge>
-        {subscription.current_period_end && (
-          <p className="text-sm text-muted-foreground mt-2">
-            {subscription.cancel_at_period_end ? 'Expires' : 'Renews'} on{' '}
-            {new Date(subscription.current_period_end * 1000).toLocaleDateString()}
-          </p>
-        )}
-      </CardContent>
-    </Card>
+    <div className="hidden sm:block">
+      <Card className="w-full max-w-xs">
+        <CardHeader className="pb-2">
+          <CardTitle className="text-xs">Estado de suscripción</CardTitle>
+          <CardDescription className="text-xs">{productName}</CardDescription>
+        </CardHeader>
+        <CardContent className="pt-0">
+          <Badge variant={getStatusColor(subscription.subscription_status || '')} className="text-xs">
+            {getStatusText(subscription.subscription_status || '')}
+          </Badge>
+          {subscription.current_period_end && (
+            <p className="text-xs text-muted-foreground mt-2">
+              {subscription.cancel_at_period_end ? 'Expira' : 'Se renueva'} el{' '}
+              {new Date(subscription.current_period_end * 1000).toLocaleDateString('es-ES')}
+            </p>
+          )}
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 
