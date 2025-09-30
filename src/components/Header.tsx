@@ -18,7 +18,7 @@ const Header: React.FC = () => {
           {user ? (
             <>
               <SubscriptionStatus />
-              <Button variant="outline" size="sm" className="hidden sm:inline-flex" asChild>
+              <Button variant="outline" size="sm" className="text-xs sm:text-sm" asChild>
                 <Link to="/pricing">Precios</Link>
               </Button>
               <Button variant="ghost" size="sm" onClick={signOut} className="text-xs sm:text-sm">
